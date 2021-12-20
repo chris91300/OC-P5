@@ -1,0 +1,51 @@
+
+.modal{
+    position : fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-modal-bg;
+
+    &.show{
+        display: flex;
+    }
+
+    &__container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 90%;
+        max-width: 500px;
+        min-height: 200px;
+        border: 1px solid black;
+        border-radius: 20px;
+        background-color: white;
+
+        &--alert{
+            background-color: $color-alert-light;
+        }
+
+
+    }
+
+    &__button--hide{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 1.5rem;
+        height: 1.5rem;
+        background-color: $color-modal-button-hide;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+    }
+
+    &__text{
+        color: black;
+    }
+
+}

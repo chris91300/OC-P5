@@ -2,7 +2,8 @@
 
 window.onload = async ()=>{
     console.log("c'est parti ma poule");
-    new Modal();
+    let modalError = new ModalError();
+
 
     /**
      * utilisation de fetch sans async / await

@@ -8,8 +8,10 @@
  * data.action : { string }have to be "appendChild", "insertBefore", insertAfter"
  * data.typeElement : { string } : type of the element (div, a, h1 ...)
  * data.classElement : { sting } all the class of the element (ex : "class1 class2 class3 ...");
- * data.attributes : { array } : list of the attributes of the element
+ * data.attributes : { object } : list of the attributes of the element
  * data.text : { string } : the text to insert into the element
+ * data.eventElement : { string } the type of event to add to Object Event
+ * data.callback : { function } the callback to add to Object Event
  */
 
 function createElement(data){
@@ -35,15 +37,17 @@ function createElement(data){
             throw new Error("impossible de créer l'élement. data classElement n'est pas un string");
         }
 
-        if ( data.attributes != undefined & typeof(data.attributes) != "array" ){
-            throw new Error("impossible de créer l'élement. data attributes n'est pas un array");
+    
+        if ( data.attributes != undefined & typeof(data.attributes) != "object" ){
+            console.log(typeof(data.attributes))
+            throw new Error("impossible de créer l'élement. data attributes n'est pas un object");
         }
 
         if ( data.text != undefined & typeof(data.text) != "string" ){
             throw new Error("impossible de créer l'élement. data text n'est pas un string");
         }
 
-        let { parent, typeElement, action, id, classElement, attributes, text } = data;
+        let { parent, typeElement, action, classElement, attributes, text, eventElement, callback } = data;
 
         let element = document.createElement(typeElement);
 
@@ -52,11 +56,13 @@ function createElement(data){
             element.className = classElement;
         }
 
-        /** ajout des attribut s'il y en a */
+        /** ajout des attributs s'il y en a */
         if ( attributes ) {
-            attributes.map( ( { attribute, value } )=>{
+            Object.entries(attributes).map( ( [ attribute, value ] )=>{
 
                 if ( attribute == undefined || typeof(attribute) != "string" ){
+                    console.log(attribute);
+                    console.log(typeof(attribute))
                     throw new Error("impossible de créer l'élement. un des attributs n'est pas un string");
                 }
 
@@ -74,7 +80,6 @@ function createElement(data){
         switch(action){
 
             case "appendChild" :
-                console.log(parent)
                 parent.appendChild(element);
                 break;
 
@@ -88,6 +93,12 @@ function createElement(data){
 
             default:
                 throw new Error("impossible de créer l'élement. Aucun action ne correspond.")
+        }
+
+        
+        /** ajoute un evênement au gestionnaire d'évênement s'il y en a */
+        if ( eventElement != undefined & callback != undefined ) {
+            element.addEventListener(eventElement, callback);
         }
 
 

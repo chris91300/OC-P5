@@ -1,0 +1,21 @@
+@use "sass:color";
+
+//  BREAKPOINTS
+
+$breakpoints : (
+    mobile-landscape : 576px,
+    tablette : 768px,
+    desktop : 992px,
+    desktop-wide : 1440px,
+);
+
+
+
+//  DÉFINITION DES COULEURS     
+
+$color-alert : rgb(243, 22, 22);
+$color-alert-light : rgb(238, 119, 119);
+
+$color-modal-bg : rgba(0,0,0,0.5);
+$color-modal-button-hide : grey;
+
