@@ -26,7 +26,11 @@
         background-color: white;
 
         &--alert{
-            background-color: $color-alert-light;
+            background-color: $color-alert-light; 
+        }
+
+        &--success{
+            background-color: $color-success-light; 
         }
 
 

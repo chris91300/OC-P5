@@ -26,6 +26,9 @@
 .modal__container--alert {
   background-color: #ee7777;
 }
+.modal__container--success {
+  background-color: #6ef779;
+}
 .modal__button--hide {
   position: absolute;
   top: 10px;

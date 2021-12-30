@@ -16,11 +16,13 @@
 
 function createElement(data){
     try{
-        console.log(data)
-        if ( typeof(data) != "object" ){            
+        //console.log(data)
+        checkTypeOfVariable(data, "object", "impossible de créer l'élement. data doit être de type 'object'");
+       /* if ( typeof(data) != "object" ){            
             throw new Error("impossible de créer l'élement. data doit être de type 'object'");
-        }
+        }*/
 
+        
         if ( data.parent == undefined || typeof(data.parent) != "object" ){
             throw new Error("impossible de créer l'élement. L'élément doit avoir un parent");
         }
@@ -39,7 +41,7 @@ function createElement(data){
 
     
         if ( data.attributes != undefined & typeof(data.attributes) != "object" ){
-            console.log(typeof(data.attributes))
+           // console.log(typeof(data.attributes))
             throw new Error("impossible de créer l'élement. data attributes n'est pas un object");
         }
 
@@ -61,8 +63,6 @@ function createElement(data){
             Object.entries(attributes).map( ( [ attribute, value ] )=>{
 
                 if ( attribute == undefined || typeof(attribute) != "string" ){
-                    console.log(attribute);
-                    console.log(typeof(attribute))
                     throw new Error("impossible de créer l'élement. un des attributs n'est pas un string");
                 }
 
@@ -109,6 +109,7 @@ function createElement(data){
     }
     catch(err){
         console.log(err);
+
     }
     
 }

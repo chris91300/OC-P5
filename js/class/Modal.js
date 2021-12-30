@@ -18,8 +18,7 @@ class Modal{
      */
     init(){
         let body = document.body;
-        /*console.log("this.hide()");
-        console.log(this.hide())*/
+        
         this.modal = createElement({
             parent : body,
             action : "appendChild",

@@ -8,7 +8,7 @@ class ModalError extends Modal{
     }
 
 
-    showMessage(message){
+    showMessage(message = this.message){
         this.text.innerHTML = message;
         super.show();
     }

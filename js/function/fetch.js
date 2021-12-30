@@ -4,22 +4,20 @@
  * @param {string} url 
  * @returns an object 
  */
-async function useFetch(url){
+async function useFetch(url, options=null){
+    
+    checkTypeOfVariable(url, "string", "l'url n'est pas de type string");
+    
+    let response = await fetch(url, options);
 
-    try{
-        let response = await fetch(url);
-
-        if ( !response.ok ){
-            throw new Error("response pas ok dans useFetch");
-        }
-
-        let json = await response.json();
-
-        return json;
+    if ( !response.ok ){
+        throw new Error("Une erreur de serveur est survenu. Merci de recharger la page.");
     }
-    catch(err){
-        console.log(err);
-    }
+
+    let json = await response.json();
+
+    return json;
+    
     
     
 }
