@@ -1,4 +1,9 @@
 
+
+/**
+ * @class Modal
+ * permet d'afficher un message à l'utilisateur
+ */
 class Modal{
 
     constructor(id ="modal-error", message = "Une erreur est survenue.", type = "alert"){

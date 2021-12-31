@@ -129,20 +129,21 @@ class Item{
         let quantity = this.getTheQuantity();
 
         if ( !(color == undefined || quantity === 0) ){
-            console.log("on peut ajouter au panier")
-            console.log("id => "+id)
+            
             this.cart.addProduct(data, color, quantity, id);
-
             this.modalSuccess.showMessage();
+
         } else {
+
             this.modalError.showMessage("Il faut une couleur et une quantité (entre 1 et 100) valides.");
+            
         }
 
     }
 
 
     /**
-     * 
+     * récupère et retourne la couleur du produit choisi par l'utilisateur
      * @returns { string } la couleur du canapé choisi par l'utilisateur
      */
     getTheChosenColor(){
@@ -167,7 +168,7 @@ class Item{
 
 
     /**
-     * 
+     * récupère et retourne la quantité de produit choisi par l'utilisateur
      * @returns { number } la quantité de canapé choisi par l'utilisateur
      */
     getTheQuantity(){

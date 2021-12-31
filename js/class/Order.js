@@ -1,7 +1,10 @@
 
 
 
-
+/**
+ * @class Order
+ * récupère et affiche l'orderId ( numéro de commande )
+ */
 class Order{
 
     constructor(){
@@ -9,10 +12,12 @@ class Order{
         this.orderIdElement = document.getElementById("orderId");
 
         this.sendOrderId();
-        this.clearCart();
     }
 
 
+    /**
+     * récupère et affiche l'orderId ( numéro de commande )
+     */
     sendOrderId(){
 
         let url = location.href;
@@ -22,8 +27,4 @@ class Order{
     }
 
 
-    clearCart(){
-
-
-    }
 }

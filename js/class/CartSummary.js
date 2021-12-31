@@ -140,6 +140,11 @@ class CartSummary{
 
 
 
+    /**
+     * regarde si le panier est vide.
+     * si vide alors on lance this.initEmptyCart()
+     * sinon rien
+     */
     checkIfCartIsEmpty(){
         let products = this.cart.getProducts();
 
@@ -151,6 +156,11 @@ class CartSummary{
 
 
 
+
+    /**
+     * regarde si le panier est vide
+     * @returns { boolean } true si le panier est vide sinon false
+     */
     doesCartIsEmpty(){
         let cartIsEmpty = false;
 
@@ -170,11 +180,14 @@ class CartSummary{
     }
 
 
+
+    /**
+     * créer un tableau contenant les identifiants des produits du panier
+     * @returns { array } la liste des ID des produits
+     */
     getCart(){
         let products = this.cart.getProducts();
-        let listOfProducts = []
-        console.log("LA LISTE EST ")
-        console.log(products)
+        let listOfProducts = [];
 
         Object.entries(products).map(([ key, data ])=>{
             

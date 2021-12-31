@@ -1,7 +1,7 @@
 
 
 /**
- * Vérifie si le type de a variable correspond au type envoyé en paramètre
+ * Vérifie si le type de la variable correspond au type envoyé en paramètre
  * @param {*} variable 
  * @param {string} type 
  * @param {string} message 

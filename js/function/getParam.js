@@ -11,26 +11,12 @@ function getParam(url, paramToReturn){
 
     checkTypeOfVariable(url, "string", "impossible de récupérer un paramètre. l'url n'est pas valable");
     checkTypeOfVariable(paramToReturn, "string", "impossible de créer l'élement. le paramètre à rechercher n'est pas valable");
-    
-    let paramFinded = false;
+    url = url.split("?")[1];
     let valueToReturn = null;
-    let params = url.split("?")[1];
-    let listOfParams = params.split("&");
-
-
-    listOfParams.map((parameter)=>{
-        let [ param, value ] = parameter.split("=");
-        if ( paramToReturn === param ){
-            paramFinded = true
-            valueToReturn = value;
-        }
-    })
-
-    if ( !paramFinded ) {
-        
-        throw new Error("aucun paramètre ne correspond au paramètre demandé");        
-    }     
-
+    let searchParams = new URLSearchParams(url)
+    
+    valueToReturn = searchParams.get(paramToReturn);
+    
     return valueToReturn;
 
 }

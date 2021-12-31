@@ -166,7 +166,7 @@ class CartSummaryProduct{
 
 
     /**
-     * creation de la partie conent settings delete du produit
+     * creation de la partie content settings delete du produit
      */
     createContentSettingsDelete(container){
 
@@ -213,9 +213,8 @@ class CartSummaryProduct{
 
     /**
      * supprime le produit du panier
-     * @param {object} e l'objet EVENT
      */
-    removeProduct = (e) => {
+    removeProduct = () => {
         
         let name = this.name;
         let color = this.color;

@@ -21,7 +21,19 @@ class Products{
     async init(){
         try{
 
+            //  create et insertion d'un loading 
+            let loading = createElement({
+                parent : this.productsContainer,
+                action : "appendChild",
+                typeElement : "div",
+                attributes : { "id" : "loading"}
+            })
+
             this.products = await useFetch(this.urlProducts);
+
+            //  suppression du loading
+            this.productsContainer.removeChild(loading);
+            
             this.products.map((product)=>{
                 new Product(this.productsContainer, product);
             })

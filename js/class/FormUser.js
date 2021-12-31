@@ -1,7 +1,9 @@
 
 
-
-
+/**
+ * @class FormUser
+ * gère le formulaire que l'utilisateur doit remplir pour valider son panier
+ */
 class FormUser{
 
     constructor(cartSummary){
@@ -219,6 +221,11 @@ class FormUser{
 
 
 
+    /**
+     * envoie les données du formulaire et la liste des produits au serveur
+     * pour récupérer si tout est valide le orderID ( numéro de commande )
+     * puis vide le panier et envoie l'utilisateur vers la page de confirmation
+     */
     async sendToServer() {
 
         let body = {};

@@ -2,7 +2,7 @@
 /**
  * @class Cart
  * 
- * Réprésente le panier de l'utilisateur.
+ * Représente le panier de l'utilisateur.
  */
 
 class Cart{

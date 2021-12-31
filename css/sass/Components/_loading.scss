@@ -1,0 +1,15 @@
+
+
+
+#loading{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: 2px solid;
+    border-top-color: transparent;
+    border-right-color: $color-loading;
+    border-bottom-color: $color-loading;
+    border-left-color: $color-loading;
+
+    animation: rotate 10s 0s linear infinite;
+}

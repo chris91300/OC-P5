@@ -16,12 +16,9 @@
 
 function createElement(data){
     try{
-        //console.log(data)
+        
         checkTypeOfVariable(data, "object", "impossible de créer l'élement. data doit être de type 'object'");
-       /* if ( typeof(data) != "object" ){            
-            throw new Error("impossible de créer l'élement. data doit être de type 'object'");
-        }*/
-
+       
         
         if ( data.parent == undefined || typeof(data.parent) != "object" ){
             throw new Error("impossible de créer l'élement. L'élément doit avoir un parent");
