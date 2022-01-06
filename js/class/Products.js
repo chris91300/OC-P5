@@ -1,7 +1,7 @@
 
 /**
  * @class Products
- * class qui demande au serveur la liste des produits et les insert dans la page
+ * class qui demande au serveur la liste des produits et les insert dans le DOM
  */
 class Products{
 
@@ -35,14 +35,24 @@ class Products{
             this.productsContainer.removeChild(loading);
             
             this.products.map((product)=>{
-                new Product(this.productsContainer, product);
+                new Product(this, this.productsContainer, product);
             })
 
         }
         catch(err){
             
-            this.modalError.showMessage(err.message);
+            this.sendMessage(err.message);
         }
         
+    }
+
+
+
+    /**
+     * envoie le message d'erreur à la modalErro pour qu'elle l'affiche
+     * @param {string} message 
+     */
+    sendMesaage(message){
+        this.modalError.showMessage(message);
     }
 }

@@ -27,17 +27,29 @@ class CartSummary{
      * récupère le panier de l'utilisateur et envoie chaque produit à CartSummaryProduct
      */
     init(){
+        try{
 
-        let products = this.cart.getProducts();
-        if ( Object.keys(products).length != 0) {
-            Object.entries(products).map(([ key, informations])=>{
-            
-                informations = JSON.parse(informations);
-                new CartSummaryProduct(this.container, informations, this);         
+            let products = this.cart.getProducts();
+
+            if ( Object.keys(products).length != 0) {
+
+                Object.entries(products).map(([ key, informations])=>{
                 
-            })
-        } else {
-            this.initEmptyCart();
+                    informations = JSON.parse(informations);
+                    new CartSummaryProduct(this.container, informations, this);         
+                    
+                })
+
+            } else {
+
+                this.initEmptyCart();
+
+            }
+
+        } catch(err) {
+
+            this.sendError(err.message);
+
         }
 
     }
@@ -49,12 +61,14 @@ class CartSummary{
      * @param {*} quantity la quantité à ajouter
      */
     addTotalQuantity(quantity){
+
         if(typeof quantity === "string"){
             quantity = parseInt(quantity);
         }
 
         this.totalQuantity += quantity;
         this.insertTotalQuantity();
+
     }
 
 
@@ -65,8 +79,7 @@ class CartSummary{
      * @param {*} quantity la quantité de produit
      */
     addTotalPrice(price, quantity){
-        console.log("addtotalprice")
-        console.log(price + " x " + quantity)
+        
         if(typeof price === "string"){
             price = parseFloat(price);
         }
@@ -74,7 +87,7 @@ class CartSummary{
         if(typeof quantity === "string"){
             quantity = parseInt(quantity);
         }
-        console.log(price * quantity)
+        
         this.totalPrice += ( price * quantity );
         this.insertTotalPrice();
     }
@@ -85,8 +98,10 @@ class CartSummary{
      * insert dand le DOM la quantité totale
      */
     insertTotalQuantity(){
+
         let quantityElement = document.getElementById("totalQuantity");
         quantityElement.innerHTML = this.totalQuantity;
+
     }
 
 
@@ -94,8 +109,10 @@ class CartSummary{
      * insert dand le DOM le prix total
      */
     insertTotalPrice(){
+
         let priceElement = document.getElementById("totalPrice");
         priceElement.innerHTML = this.totalPrice;
+
     }
 
 
@@ -106,10 +123,12 @@ class CartSummary{
      * nombre d'article affichera 0 et prix 0€
      */
     initEmptyCart(){
+
         let title = document.querySelector("h1");
         title.innerHTML = "VOTRE PARNIER EST VIDE";
         this.insertTotalQuantity();
         this.insertTotalPrice();
+
     }
 
 
@@ -146,10 +165,13 @@ class CartSummary{
      * sinon rien
      */
     checkIfCartIsEmpty(){
+
         let products = this.cart.getProducts();
 
         if ( Object.keys(products).length === 0){
+
             this.initEmptyCart();
+
         }
 
     }
@@ -162,6 +184,7 @@ class CartSummary{
      * @returns { boolean } true si le panier est vide sinon false
      */
     doesCartIsEmpty(){
+
         let cartIsEmpty = false;
 
         let products = this.cart.getProducts();
@@ -171,10 +194,13 @@ class CartSummary{
         }
 
         return cartIsEmpty;
+
     }
 
 
-    /**retirer modal error des autre class et passer par la */
+    /**
+     * envoie un message d'erreur à afficher à la modalError
+     */
     sendError(message) {
         this.modalError.showMessage(message);
     }
@@ -186,6 +212,7 @@ class CartSummary{
      * @returns { array } la liste des ID des produits
      */
     getCart(){
+
         let products = this.cart.getProducts();
         let listOfProducts = [];
 
@@ -197,6 +224,7 @@ class CartSummary{
         })
 
         return listOfProducts;
+        
     }
 
 

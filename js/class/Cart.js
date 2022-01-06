@@ -9,9 +9,6 @@ class Cart{
 
     constructor(modalError){
         this.modalError = modalError;
-        console.log("CART");
-        console.log({...localStorage});
-        //localStorage.clear() 
     }
 
 
@@ -25,6 +22,7 @@ class Cart{
      */
     addProduct(data, color, quantity, id){
         try {
+
             let name = data.name;
             let localStorageKey = name+ "_" + color;
             let product = localStorage.getItem(localStorageKey);
@@ -42,13 +40,10 @@ class Cart{
                 informations.color = color;
                 informations.price = data.price;
                 informations.quantity = quantity;
-                console.log(informations)
-                console.log(data)
+                
                 localStorage.setItem(localStorageKey, JSON.stringify(informations));
             }
-
-            console.log("après l'ajout du produit localStorage vaut");
-            console.log(localStorage);
+            
         }
         catch(err){
             this.modalError.showMessage(err.message)
@@ -65,7 +60,8 @@ class Cart{
      * @param {string} color la couleur du produit
      * @param {number} quantity la quantité de produit
      */
-    addColorProduct(name, color, quantity){
+   /* addColorProduct(name, color, quantity){
+
         let localStorageKey = name+ "_" + color;
         let product = localStorage.getItem(localStorageKey);
         product = JSON.parse(product);
@@ -74,16 +70,9 @@ class Cart{
             
             this.addQuantityProduct(name, color, quantity);
 
-        } /*else {
-        // A SUPPRIMER
-        console.log("on est laaaaaaaaaaaaaaa")
-            product.color = {};
-            product["colors"][color]["quantity"] = quantity;
-            localStorage.setItem(id, JSON.stringify(product));
-        }*/
+        } 
 
-
-    }
+    }*/
 
 
 
@@ -95,19 +84,30 @@ class Cart{
      * @param {number} quantity la quantité de produit
      */
     addQuantityProduct(name, color, quantity){
-        let localStorageKey = name+ "_" + color;
-        let product = localStorage.getItem(localStorageKey);
-        product = JSON.parse(product);
-        
-        if ( product == undefined ){
-            throw new Error("Le produit n'est pas dans le panier.");
-        }
-            
-        let quantityAlreadyDefine = product.quantity;
-        let newQuantity = parseInt(quantityAlreadyDefine) + parseInt(quantity);
-        product.quantity = newQuantity;
 
-        localStorage.setItem(localStorageKey, JSON.stringify(product));
+        try{
+
+            let localStorageKey = name+ "_" + color;
+            let product = localStorage.getItem(localStorageKey);
+            product = JSON.parse(product);
+            
+            if ( product == undefined ){
+                throw new Error("Le produit n'est pas dans le panier.");
+            }
+                
+            let quantityAlreadyDefine = product.quantity;
+            let newQuantity = parseInt(quantityAlreadyDefine) + parseInt(quantity);
+            product.quantity = newQuantity;
+
+            localStorage.setItem(localStorageKey, JSON.stringify(product));
+
+        }
+        catch(err) {
+
+            this.modalError.showMessage(err.message)
+
+        }
+        
         
     }
 
@@ -130,17 +130,23 @@ class Cart{
      * supprime le produit du panier
      * @param {string} name le nom du produit
      * @param {string} color la couleur du produit
+     * @returns {boolean} false si aucune erreur n'est produite. true sinon
      */
     removeProduct(name, color) {
-        console.log("on supprime un produit "+name+"_"+color)
+        
         let key = name+"_"+color;
         let product = localStorage.getItem(key);
+
         if ( product ) {
+
             localStorage.removeItem(key)
             return false;
+
         } else {
+
             this.modalError.showMessage("aucun produit de ce nom et avec cette couleur dans le panier");
             return true;
+
         }
     }
 

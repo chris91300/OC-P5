@@ -24,7 +24,7 @@ class Item{
 
 
     /**
-     * inséère dans le DOM les informations sur le produit
+     * insère dans le DOM les informations sur le produit
      */
     async init(){
 
@@ -52,24 +52,17 @@ class Item{
      */
     insertImage(imgUrl, altText){
 
-        try{
+        let container = document.getElementsByClassName("item__img")[0];
+        let image = createElement({
+            parent : container,
+            action : "appendChild",
+            typeElement : "img",
+            attributes : { 
+                "src" : imgUrl,
+                "alt" : altText
+                }
+        });
 
-            let container = document.getElementsByClassName("item__img")[0];
-            let image = createElement({
-                parent : container,
-                action : "appendChild",
-                typeElement : "img",
-                attributes : { 
-                    "src" : imgUrl,
-                    "alt" : altText
-                    }
-            });
-
-        }
-        catch(err){
-
-            this.modalError.showMessage(err.message);
-        }
     }
 
 

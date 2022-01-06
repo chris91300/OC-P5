@@ -65,7 +65,7 @@ class FormUser{
     initInputEvent(){
         let inputs = document.querySelectorAll("form input");
         
-        Object.entries(inputs).map(( [key, input])=>{
+        Object.entries(inputs).map( ( [ key, input ] )=>{
             
             let type = input.getAttribute("type");
             if ( type != undefined & type != "submit") {
@@ -112,6 +112,11 @@ class FormUser{
 
             this.setResultAboutCheck(idElement, variableValue, variableIsValid);
         }
+        /**
+         * si vide alors il faut modifier la valeur de this.'input' et this.valid
+         * 
+         * this.setResultAboutCheck(idElement, undefined, false);
+         */
         
         
     }

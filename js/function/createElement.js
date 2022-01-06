@@ -15,7 +15,7 @@
  */
 
 function createElement(data){
-    try{
+   
         
         checkTypeOfVariable(data, "object", "impossible de créer l'élement. data doit être de type 'object'");
        
@@ -38,7 +38,7 @@ function createElement(data){
 
     
         if ( data.attributes != undefined & typeof(data.attributes) != "object" ){
-           // console.log(typeof(data.attributes))
+           
             throw new Error("impossible de créer l'élement. data attributes n'est pas un object");
         }
 
@@ -101,12 +101,5 @@ function createElement(data){
 
         return element;
 
-        
-
-    }
-    catch(err){
-        console.log(err);
-
-    }
     
 }

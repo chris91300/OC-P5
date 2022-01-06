@@ -20,7 +20,8 @@ class Product{
      * @param {number} price le prix du produit
      * @param {string} _id l'identifiant du produit
      */
-    constructor( container, { altTxt, colors, description, imageUrl, name, price, _id }){
+    constructor( products, container, { altTxt, colors, description, imageUrl, name, price, _id }){
+        this.products = products;
         this.container = container;
         this.altTxt = altTxt;
         this.colors = colors;
@@ -39,44 +40,54 @@ class Product{
      *  création et insertion du produit dans la page avec les données correspondantes
      */
     init(){
-        let productContainer = createElement({
-            parent : this.container,
-            action : "appendChild",
-            typeElement : "a",
-            attributes : { "href" : this.linkToPage}
-        });
 
-        let article = createElement({
-            parent : productContainer,
-            action : "appendChild",
-            typeElement : "article",
-        });
+        try{
 
-        let image = createElement({
-            parent : article,
-            action : "appendChild",
-            typeElement : "img",
-            attributes : { 
-                "src" : this.imageUrl,
-                "alt" : this.altTxt
-                }
-        });
+            let productContainer = createElement({
+                parent : this.container,
+                action : "appendChild",
+                typeElement : "a",
+                attributes : { "href" : this.linkToPage}
+            });
+    
+            let article = createElement({
+                parent : productContainer,
+                action : "appendChild",
+                typeElement : "article",
+            });
+    
+            let image = createElement({
+                parent : article,
+                action : "appendChild",
+                typeElement : "img",
+                attributes : { 
+                    "src" : this.imageUrl,
+                    "alt" : this.altTxt
+                    }
+            });
+    
+            let title = createElement({
+                parent : article,
+                action : "appendChild",
+                typeElement : "h3",
+                classElement : "productName",
+                text : this.name
+            });
+    
+            let description = createElement({
+                parent: article,
+                action : "appendChild",
+                typeElement : "p",
+                classElement : "productDescription",
+                text : this.description
+            });
 
-        let title = createElement({
-            parent : article,
-            action : "appendChild",
-            typeElement : "h3",
-            classElement : "productName",
-            text : this.name
-        });
+        }
+        catch(err){
 
-        let description = createElement({
-            parent: article,
-            action : "appendChild",
-            typeElement : "p",
-            classElement : "productDescription",
-            text : this.description
-        });
+            this.products.sendMessage(err.message);
+            
+        }
 
     }
 }

@@ -195,18 +195,26 @@ class CartSummaryProduct{
      * modification de la quantité de d'article au changement de la quantité de produit
      */
     quantityChanged = (e) => {
-        let input = e.currentTarget;
-        let newQuantity = input.value;
-        let diff = parseInt(newQuantity) - parseInt(this.quantity);
-        let name = this.name;
-        let color = this.color;
-        let price = this.price; 
+        try{
 
-        this.cartSummary.addTotalPrice(price, diff);
-        this.cartSummary.addTotalQuantity(diff);
+            let input = e.currentTarget;
+            let newQuantity = input.value;
+            let diff = parseInt(newQuantity) - parseInt(this.quantity);
+            let name = this.name;
+            let color = this.color;
+            let price = this.price; 
 
-        this.cartSummary.addQuantityProductToCart(name, color, diff);
-        this.quantity = newQuantity;
+            this.cartSummary.addTotalPrice(price, diff);
+            this.cartSummary.addTotalQuantity(diff);
+
+            this.cartSummary.addQuantityProductToCart(name, color, diff);
+            this.quantity = newQuantity;
+
+        }
+        catch(err){
+            this.cartSummary.sendError(err.message);
+        }
+        
     }
 
 
@@ -216,19 +224,25 @@ class CartSummaryProduct{
      */
     removeProduct = () => {
         
-        let name = this.name;
-        let color = this.color;
-        let error = this.cartSummary.removeProduct(name, color);
+        try{
 
-        if( !error ) {
+            let name = this.name;
+            let color = this.color;
+            let error = this.cartSummary.removeProduct(name, color);
 
-            let quantity = parseInt(this.quantity) * -1;
-            let price = this.price;
+            if( !error ) {
 
-            this.container.removeChild(this.article);
-            this.cartSummary.addTotalQuantity(quantity);
-            this.cartSummary.addTotalPrice(price, quantity);
-            this.cartSummary.checkIfCartIsEmpty();
+                let quantity = parseInt(this.quantity) * -1;
+                let price = this.price;
+
+                this.container.removeChild(this.article);
+                this.cartSummary.addTotalQuantity(quantity);
+                this.cartSummary.addTotalPrice(price, quantity);
+                this.cartSummary.checkIfCartIsEmpty();
+            }
+        }
+        catch(err){
+            this.cartSummary.sendError(err.message);
         }
         
     }
