@@ -38,6 +38,19 @@
 }
 .modal__container--success {
   background-color: #6ef779;
+  flex-direction: column;
+}
+.modal__container__buttons {
+  padding-top: 1rem;
+}
+.modal__container__buttons button {
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10px 15px;
+  background-color: transparent;
+  margin: 0 10px;
+  font-weight: bold;
+  cursor: pointer;
 }
 .modal__button--hide {
   position: absolute;
