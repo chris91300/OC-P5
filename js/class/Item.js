@@ -103,6 +103,7 @@ class Item{
                 text : color
             });
         })
+        
     }
 
 
@@ -132,6 +133,7 @@ class Item{
             
             this.cart.addProduct(data, color, quantity, id);
             this.modalSuccess.showMessage();
+            this.resetvalueColorAndQuantity();
 
         } else {
 
@@ -184,5 +186,19 @@ class Item{
             return 0;
 
         }
+    }
+
+
+
+    /**
+     * remet à "zéro" la valeur de la couleur et de la quantité
+     */
+    resetvalueColorAndQuantity(){
+        let couleurs = document.getElementById("colors");
+        let quantity = document.getElementById("quantity");
+        
+        couleurs.selectedIndex = 0;
+        quantity.value = 0;
+       
     }
 }
