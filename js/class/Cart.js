@@ -2,23 +2,27 @@
 /**
  * @class Cart
  * 
- * Représente le panier de l'utilisateur.
+ * The user cart. Communicate with the localstorage
  */
 
 class Cart{
 
+    /**
+     * 
+     * @param {object} modalError an instance of the modalError object
+     */
     constructor(modalError){
         this.modalError = modalError;
     }
 
 
     /**
-     * ajoute un produit dans le localStorage
+     * add a product into the localstorage
      * 
-     * @param {object} data les informations sur le produit
-     * @param {string} color la couleur du produit
-     * @param {number} quantity la quantité de produit
-     * @param {string} id l'identifiant du produit'
+     * @param {object} data informations about the product
+     * @param {string} color product color
+     * @param {number} quantity product quantity
+     * @param {string} id product id
      */
     addProduct(data, color, quantity, id){
         try {
@@ -55,33 +59,11 @@ class Cart{
 
 
     /**
-     * ajout une nouvelle couleur au produit demandé
-     * @param {string} name le nom du produit
-     * @param {string} color la couleur du produit
-     * @param {number} quantity la quantité de produit
-     */
-   /* addColorProduct(name, color, quantity){
-
-        let localStorageKey = name+ "_" + color;
-        let product = localStorage.getItem(localStorageKey);
-        product = JSON.parse(product);
-
-        if ( product ) {
-            
-            this.addQuantityProduct(name, color, quantity);
-
-        } 
-
-    }*/
-
-
-
-
-    /**
-     * ajout une nouvelle quantité à la couleur de produit demandé
-     * @param {string} name le nom du produit
-     * @param {string} color la couleur du produit
-     * @param {number} quantity la quantité de produit
+     * add a quantity to the product if is already in the localstorage
+     * 
+     * @param {string} name product name
+     * @param {string} color product color
+     * @param {number} quantity product quantity
      */
     addQuantityProduct(name, color, quantity){
 
@@ -115,9 +97,9 @@ class Cart{
 
 
     /**
-     * permet de récupérer le contenu du panier de l'utilisateur
+     * get user cart
      * 
-     * @returns le panier de l'utilisateur. La liste des produits de son panier
+     * @returns {object} the user cart. the list of his products
      */
     getProducts(){
         let products = {...localStorage};
@@ -127,10 +109,10 @@ class Cart{
 
 
     /**
-     * supprime le produit du panier
-     * @param {string} name le nom du produit
-     * @param {string} color la couleur du produit
-     * @returns {boolean} false si aucune erreur n'est produite. true sinon
+     * remove a product into the localstorage
+     * @param {string} name product name
+     * @param {string} color product color
+     * @returns {boolean} there is an error ( false is no error. else true )
      */
     removeProduct(name, color) {
         
@@ -153,7 +135,7 @@ class Cart{
 
 
     /**
-     * vide le panier
+     * empty the localstorage
      */
     clear(){
         localStorage.clear()

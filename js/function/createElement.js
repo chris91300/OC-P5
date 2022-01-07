@@ -12,6 +12,8 @@
  * data.text : { string } : the text to insert into the element
  * data.eventElement : { string } the type of event to add to Object Event
  * data.callback : { function } the callback to add to Object Event
+ * 
+ * @return {object} element. the DOM element
  */
 
 function createElement(data){
@@ -50,12 +52,12 @@ function createElement(data){
 
         let element = document.createElement(typeElement);
 
-        /** ajout des class s'il y en a */
+        /** if classElement is define add it  */
         if ( classElement ) {
             element.className = classElement;
         }
 
-        /** ajout des attributs s'il y en a */
+        /** if attributes is define add them */
         if ( attributes ) {
             Object.entries(attributes).map( ( [ attribute, value ] )=>{
 
@@ -67,13 +69,13 @@ function createElement(data){
             })
         }
 
-        /** ajout du texte s'il y en a */
+        /** if text is define add it */
         if ( text ){
             element.innerHTML = text;
         }
 
 
-        /** insertion de l'élément en fonction de l'action demandé */
+        /** insert element into his container with appendChild or insertBefore or insertAfter */
         switch(action){
 
             case "appendChild" :
@@ -93,7 +95,7 @@ function createElement(data){
         }
 
         
-        /** ajoute un evênement au gestionnaire d'évênement s'il y en a */
+        /** add a callback to the eventlistener if there is one */
         if ( eventElement != undefined & callback != undefined ) {
             element.addEventListener(eventElement, callback);
         }

@@ -1,7 +1,9 @@
 
 /**
  * @class Products
- * class qui demande au serveur la liste des produits et les insert dans le DOM
+ * 
+ * ask all products to the server and set data to Product class
+ * 
  */
 class Products{
 
@@ -16,7 +18,8 @@ class Products{
 
 
     /**
-     * récupèration des produits et envois les informations de chaque prouit à la class Product
+     * products recovery
+     * send each data product to the Product class
      */
     async init(){
         try{
@@ -49,8 +52,8 @@ class Products{
 
 
     /**
-     * envoie le message d'erreur à la modalErro pour qu'elle l'affiche
-     * @param {string} message 
+     * send the error message to the modalError
+     * @param {string} message the message to show
      */
     sendMesaage(message){
         this.modalError.showMessage(message);

@@ -2,7 +2,7 @@
 /**
  * function who use the js function fetch in order to simplify the system async / await
  * @param {string} url 
- * @returns an object 
+ * @returns an object the object that the server returns
  */
 async function useFetch(url, options=null){
     

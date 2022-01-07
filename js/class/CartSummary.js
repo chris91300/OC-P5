@@ -2,9 +2,10 @@
 
 /**
  * @class CartSummary
- * gère la page du panier. 
- * récupération du panier et affichage des différents produits mis dans le panier via la class CartSummaryProduct
- * initialise la class FormUser qui gère le formulaire
+ * manage the cart page. 
+ * get user cart and show the different product with the class CartSummaryProduct
+ * 
+ * initialize the class FormUser who manage the form
  * 
  */
 
@@ -24,7 +25,7 @@ class CartSummary{
 
 
     /**
-     * récupère le panier de l'utilisateur et envoie chaque produit à CartSummaryProduct
+     * get user cart and send each data product to CartSummaryProduct
      */
     init(){
         try{
@@ -57,8 +58,9 @@ class CartSummary{
 
 
     /**
-     * ajoute une quantité de produit à la quantité total
-     * @param {*} quantity la quantité à ajouter
+     * add a quantity of a product to the total quantity
+     * 
+     * @param {*} quantity the quantity to add
      */
     addTotalQuantity(quantity){
 
@@ -74,9 +76,10 @@ class CartSummary{
 
 
     /**
-     * ajoute un prix de produit au prix total
-     * @param {*} price le prix à ajouter
-     * @param {*} quantity la quantité de produit
+     * calculate and add a price to the total price.
+     * 
+     * @param {*} price the price of the product
+     * @param {*} quantity the quantity of product
      */
     addTotalPrice(price, quantity){
         
@@ -95,7 +98,7 @@ class CartSummary{
 
 
     /**
-     * insert dand le DOM la quantité totale
+     * insert into the DOM the total quantity of product
      */
     insertTotalQuantity(){
 
@@ -106,7 +109,7 @@ class CartSummary{
 
 
     /**
-     * insert dand le DOM le prix total
+     * insert into the DOM the total price
      */
     insertTotalPrice(){
 
@@ -118,9 +121,10 @@ class CartSummary{
 
 
     /**
-     * si le panier de l'utilisateur est vide alors on change le titre h1 pour qu'il affiche
-     *  VOTRE PANIER EST VIDE
-     * nombre d'article affichera 0 et prix 0€
+     * change the h1 title for ' VOTRE PANIER EST VIDE '
+     * 
+     * total quantiy qu 0
+     * total price equal 0
      */
     initEmptyCart(){
 
@@ -134,10 +138,11 @@ class CartSummary{
 
 
     /**
-     * demande au panier d'ajouter une quantité au produit 
-     * @param {string} name le nom du produit
-     * @param {string} color la couleur du produit
-     * @param {*} quantity la quantité à ajouter
+     * ask to Cart to add a quantity to the product
+     * 
+     * @param {string} name product name
+     * @param {string} color product color
+     * @param {*} quantity product quantity
      */
     addQuantityProductToCart(name, color, quantity){
 
@@ -147,9 +152,9 @@ class CartSummary{
 
 
     /**
-     * demande au panier de supprimer un produit
-     * @param {string} name le nom du produit
-     * @param {string} color la couleur du produit 
+     * ask to Cart to remove a product
+     * @param {string} name product name
+     * @param {string} color product color 
      */
     removeProduct(name, color) {
 
@@ -160,9 +165,11 @@ class CartSummary{
 
 
     /**
-     * regarde si le panier est vide.
-     * si vide alors on lance this.initEmptyCart()
-     * sinon rien
+     * check if the user cart is empty
+     * 
+     * if empty we use this.initEmptyCart()
+     * 
+     * else we do nothing
      */
     checkIfCartIsEmpty(){
 
@@ -199,7 +206,7 @@ class CartSummary{
 
 
     /**
-     * envoie un message d'erreur à afficher à la modalError
+     * send a message to the modalError
      */
     sendError(message) {
         this.modalError.showMessage(message);
@@ -208,8 +215,9 @@ class CartSummary{
 
 
     /**
-     * créer un tableau contenant les identifiants des produits du panier
-     * @returns { array } la liste des ID des produits
+     * get the user cart and create an array of id product
+     * 
+     * @returns { array } the list of the id product
      */
     getCart(){
 
@@ -230,7 +238,7 @@ class CartSummary{
 
 
     /**
-     * demande à Cart de vider le panier
+     * ask to Cart to empty the cart
      */
     clearCart(){
         this.cart.clear();

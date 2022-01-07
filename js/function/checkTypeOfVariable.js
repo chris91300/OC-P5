@@ -1,10 +1,12 @@
 
 
 /**
- * Vérifie si le type de la variable correspond au type envoyé en paramètre
- * @param {*} variable 
- * @param {string} type 
- * @param {string} message 
+ * verify if the type of the variable if valid
+ * else throw new Error
+ * 
+ * @param {*} variable the variable to check
+ * @param {string} type the expected type 
+ * @param {string} message the error message
  */
 
 function checkTypeOfVariable(variable, type, message){

@@ -2,10 +2,14 @@
 
 /**
  * @class FormUser
- * gère le formulaire que l'utilisateur doit remplir pour valider son panier
+ * manages the form that the user must complete to validate his cart
  */
 class FormUser{
 
+    /**
+     * 
+     * @param {object} cartSummary an instance of the class CartSummary
+     */
     constructor(cartSummary){
         this.cartSummary = cartSummary;
         this.urlPost = "http://localhost:3000/api/products/order";
@@ -60,7 +64,7 @@ class FormUser{
 
 
     /**
-     * ajoute tous les evênements sur les inputs ( focus et blur )
+     * add all event on focus and on blur for inputs
      */
     initInputEvent(){
         let inputs = document.querySelectorAll("form input");
@@ -80,9 +84,9 @@ class FormUser{
 
 
     /**
-     * vérifie si les données entré par l'utilsateur son conforme à celles attendues
-     * si pas conforme, alors on affiche un message d'erreur
-     * @param {object} e l'objet EVENT 
+     * verify if the input value is valid with is regex
+     * if is not valid, show an error message 
+     * @param {object} e EVENT object
      */
     checkInput = (e) => {
         let input = e.currentTarget;
@@ -111,22 +115,20 @@ class FormUser{
             }
 
             this.setResultAboutCheck(idElement, variableValue, variableIsValid);
+        } else {
+            this.setResultAboutCheck(idElement, undefined, false);
         }
-        /**
-         * si vide alors il faut modifier la valeur de this.'input' et this.valid
-         * 
-         * this.setResultAboutCheck(idElement, undefined, false);
-         */
         
         
     }
 
 
     /**
-     * associe les valeurs de l'input à ses variables 
-     * @param {string} id l'identifiant de l'element input
-     * @param {string} value la valeur de l'input
-     * @param {booleen} isValid si l'input a une valeur valide ou non
+     * set input value and inputIsValid value to the good variables
+     * 
+     * @param {string} id input id
+     * @param {string} value input value
+     * @param {booleen} isValid inputIsValid value
      */
     setResultAboutCheck(id, value, isValid){
 
@@ -158,15 +160,15 @@ class FormUser{
                 break;
 
             default :
-                // on fait rien ou renvoi erreur
+                // nothing
         }
     }
 
 
 
     /**
-     *  supprime le message d'erreur au focus sur un input
-     * @param {*} e l'objet EVENT
+     * hide the error message of the current input to the focus
+     * @param {object} e EVENT object
      */
     emptyErrorMessage = (e) => {
         let input = e.currentTarget;
@@ -181,7 +183,7 @@ class FormUser{
 
 
     /**
-     * ajoute à la liste d'evenement le callback au click sur le boutton submit
+     * add to the event listener the callback at the click to submit button
      */
     initSubmitEvent(){
         this.order.addEventListener("click", this.submit);
@@ -190,8 +192,9 @@ class FormUser{
 
 
     /**
-     * retourne le formulaire s'il est valide
-     * @param {object} e l'objet EVENT
+     * send form if is valid
+     * 
+     * @param {object} e EVENT object
      */
     submit = (e) => {
         
@@ -215,7 +218,7 @@ class FormUser{
                 this.sendToServer();
             } else {
 
-                this.cartSummary.sendError("le formulaire n'est pas valid");
+                this.cartSummary.sendError("le formulaire n'est pas valide");
                
             }
         }
@@ -227,9 +230,9 @@ class FormUser{
 
 
     /**
-     * envoie les données du formulaire et la liste des produits au serveur
-     * pour récupérer si tout est valide le orderID ( numéro de commande )
-     * puis vide le panier et envoie l'utilisateur vers la page de confirmation
+     * sends the form data and the list of products to the server
+     * if is valid, get the orderID (order number)
+     * then empties the cart and sends the user to the confirmation page
      */
     async sendToServer() {
 

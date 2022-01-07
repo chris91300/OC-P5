@@ -3,22 +3,21 @@
 /**
  * @class Product
  * 
- * class représentant un produit Kanap
- * Elle créer le produit et l'insert dans son container
+ * Represent one product card
  * 
  */
 class Product{
 
     /**
      * 
-     * @param {object} container le container dans lequel insérer l'élément
-     * @param {string} AltTxt le texte alternatif de l'image ( attribut )
-     * @param {array} colors le choix de couleur possible pour le canapé
-     * @param {string} description la description du produit
-     * @param {string} imageUrl l'url de l'image à afficher ( image du canapé )
-     * @param {string} name le nom du produit
-     * @param {number} price le prix du produit
-     * @param {string} _id l'identifiant du produit
+     * @param {object} container the container in which to insert the element
+     * @param {string} AltTxt the alternative text of the image ( attribute )
+     * @param {array} colors the possible colors choice for the product
+     * @param {string} description the product description
+     * @param {string} imageUrl the url of the image to display
+     * @param {string} name the product name
+     * @param {number} price the product price
+     * @param {string} _id the product id
      */
     constructor( products, container, { altTxt, colors, description, imageUrl, name, price, _id }){
         this.products = products;
@@ -37,7 +36,7 @@ class Product{
 
 
     /**
-     *  création et insertion du produit dans la page avec les données correspondantes
+     * create and insert into the DOM the product card
      */
     init(){
 

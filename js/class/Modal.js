@@ -2,10 +2,16 @@
 
 /**
  * @class Modal
- * permet d'afficher un message à l'utilisateur
+ * show a message tot the user
  */
 class Modal{
 
+    /**
+     * 
+     * @param {string} id the modal id
+     * @param {string} message the message to show by default
+     * @param {string} type the type of the modal children (alert or success)
+     */
     constructor(id ="modal-error", message = "Une erreur est survenue.", type = "alert"){
         this.id = id;
         this.message = message;   

@@ -1,8 +1,17 @@
 
-
-
+/**
+ * @class CartSummaryProduct
+ * 
+ * show the informations about the product
+ */
 class CartSummaryProduct{
 
+    /**
+     * 
+     * @param {object} container the element in which insert the elements created in this class
+     * @param {object} informations the product informations
+     * @param {object} cartSummary an instance of the class CartSummary
+     */
     constructor(container, informations, cartSummary){
         this.container = container;
         this.informations = informations;
@@ -22,7 +31,7 @@ class CartSummaryProduct{
 
 
     /**
-     * creation du produit et insertion dans le DOM
+     * creation of the product and insert it into the DOM
      */
     init(){
         
@@ -45,7 +54,7 @@ class CartSummaryProduct{
 
 
     /**
-     * creation de la partie image du produit
+     * creation of image part
      */
     createImg(article){
         let containerImage = createElement({
@@ -65,7 +74,7 @@ class CartSummaryProduct{
 
 
     /**
-     * creation de la partie content du produit
+     * creation of content part
      */
     createContent(article){
         let containerContent = createElement({
@@ -80,7 +89,7 @@ class CartSummaryProduct{
     }
 
     /**
-     * creation de la partie conent description du produit
+     * creation of description part
      */
     createContentDescription(container){
         let containerDescription = createElement({
@@ -114,7 +123,7 @@ class CartSummaryProduct{
 
 
     /**
-     * creation de la partie content settings du produit
+     * creation of settings part
      */
     createContentSettings(container){
         let containerSettings = createElement({
@@ -130,7 +139,7 @@ class CartSummaryProduct{
 
 
     /**
-     * creation de la partie conent settings quantité du produit
+     * creation of quantity part
      */
     createContentSettingsQuantity(container){
 
@@ -166,7 +175,7 @@ class CartSummaryProduct{
 
 
     /**
-     * creation de la partie content settings delete du produit
+     * creation of delete part
      */
     createContentSettingsDelete(container){
 
@@ -192,7 +201,7 @@ class CartSummaryProduct{
 
 
     /**
-     * modification de la quantité de d'article au changement de la quantité de produit
+     * change of item quantity to change of product quantity
      */
     quantityChanged = (e) => {
         try{
@@ -220,7 +229,7 @@ class CartSummaryProduct{
 
 
     /**
-     * supprime le produit du panier
+     * remove the product from the cart
      */
     removeProduct = () => {
         

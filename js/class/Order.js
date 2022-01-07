@@ -1,9 +1,8 @@
 
 
-
 /**
  * @class Order
- * récupère et affiche l'orderId ( numéro de commande )
+ * get the orderId into the url page and insert into the DOM
  */
 class Order{
 
@@ -16,7 +15,7 @@ class Order{
 
 
     /**
-     * récupère et affiche l'orderId ( numéro de commande )
+     * get the orderId into the url page and insert into the DOM
      */
     sendOrderId(){
 

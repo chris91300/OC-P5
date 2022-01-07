@@ -2,8 +2,8 @@
 
 /**
  * @class ModalError
- * hérite de la class Modal
- * permet d'afficher un message d'erreur à l'utilisateur
+ * extends the Modal class
+ * show a error message to the user
  */
 class ModalError extends Modal{
     constructor(){
@@ -12,6 +12,10 @@ class ModalError extends Modal{
     }
 
 
+    /**
+     * show the expected message
+     * @param {string} message the message to show
+     */
     showMessage(message = this.message){
         this.text.innerHTML = message;
         super.show();

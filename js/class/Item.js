@@ -1,10 +1,11 @@
 
 /**
  * @class Item
- * représente un produit dans la page product.html
+ * represente the product part into the product page
  * 
- * elle récupère le produit demandé via son l'id dans l'url de la page et inséère dans 
- * le DOM les informations sur le produit.
+ * get the product id into the url page 
+ * get current data product
+ * insert data into the DOM
  */
 
 class Item{
@@ -24,7 +25,7 @@ class Item{
 
 
     /**
-     * insère dans le DOM les informations sur le produit
+     * insert into the DOM the data product
      */
     async init(){
 
@@ -46,9 +47,9 @@ class Item{
 
 
     /**
-     *insert l'image du canapé
-     * @param {string} imgUrl 
-     * @param {string} altText 
+     * create the image of the product
+     * @param {string} imgUrl url of the image
+     * @param {string} altText alt attribut of the image
      */
     insertImage(imgUrl, altText){
 
@@ -68,9 +69,10 @@ class Item{
 
 
     /**
-     * insert la valeur donnée dans l'element ayant l'id donné
-     * @param {string} idName 
-     * @param {*} value 
+     * insert the value into the DOM element with the idName
+     
+     * @param {string} idName element id
+     * @param {*} value element value
      */
     insertData(idName, value){
         let element = document.getElementById(idName);
@@ -79,8 +81,8 @@ class Item{
 
 
     /**
-     * insert les options de couleur dans le select
-     * @param {array} colors les couleurs du canapé possible
+     * insert color options into the select
+     * @param {array} colors the possible colors
      */
     insertColorsOption(colors){
         let select = document.getElementById("colors");
@@ -102,8 +104,8 @@ class Item{
 
 
     /**
-     * ajoute la possibilité pour l'utilisateur de mettre un produit dans son panier 
-     * au click sur le boutton "Ajouter au panier"
+     * add the possibility for the user to add a product into his cart
+     * on click to the button "Ajouter au panier"
      */
     addToCartEvent(){
         let button = document.getElementById("addToCart");
@@ -113,8 +115,8 @@ class Item{
 
 
     /**
-     * Récupère le produit demandé, la couleur choisi ainsi que la quantité
-     * et envoi ajoute le produit au panier
+     * get the product color and quantity
+     * and add the product into the cart
      */
     getInformationsAndSendIntoCart = () => {
         let id = this.id;
@@ -138,8 +140,8 @@ class Item{
 
 
     /**
-     * récupère et retourne la couleur du produit choisi par l'utilisateur
-     * @returns { string } la couleur du canapé choisi par l'utilisateur
+     * get and return the product color value
+     * @returns { string } the product color choosen by user
      */
     getTheChosenColor(){
         let colors = document.getElementById("colors");
@@ -163,8 +165,9 @@ class Item{
 
 
     /**
-     * récupère et retourne la quantité de produit choisi par l'utilisateur
-     * @returns { number } la quantité de canapé choisi par l'utilisateur
+     * get and return the product quantity value
+     * 
+     * @returns { number } the product quantity (input quantity value)
      */
     getTheQuantity(){
         let quantityElement = document.getElementById("quantity");
@@ -184,7 +187,7 @@ class Item{
 
 
     /**
-     * remet à "zéro" la valeur de la couleur et de la quantité
+     * reset color and quantity values
      */
     resetvalueColorAndQuantity(){
         let couleurs = document.getElementById("colors");
