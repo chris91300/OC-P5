@@ -21,17 +21,6 @@ class ModalSuccess extends Modal{
     }
 
 
-    /**
-     * show the expected message
-     * @param {string} message the message to show
-     */
-    showMessage(message = this.message){
-        this.text.innerHTML = message;
-        
-        super.show();
-    }
-
-
 
     /** 
      * add buttons in order to go to the cart page or close the modal

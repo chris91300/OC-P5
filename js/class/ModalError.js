@@ -11,13 +11,4 @@ class ModalError extends Modal{
         
     }
 
-
-    /**
-     * show the expected message
-     * @param {string} message the message to show
-     */
-    showMessage(message = this.message){
-        this.text.innerHTML = message;
-        super.show();
-    }
 }

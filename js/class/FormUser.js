@@ -124,11 +124,11 @@ class FormUser{
 
 
     /**
-     * set input value and inputIsValid value to the good variables
+     * set input value and if it's valid to the good variables
      * 
      * @param {string} id input id
      * @param {string} value input value
-     * @param {booleen} isValid inputIsValid value
+     * @param {booleen} isValid if the value is valid or not
      */
     setResultAboutCheck(id, value, isValid){
 

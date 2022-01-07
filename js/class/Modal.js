@@ -67,6 +67,15 @@ class Modal{
 
     }
 
+    /**
+     * show the expected message
+     * @param {string} message the message to show
+     */
+     showMessage(message = this.message){
+        this.text.innerHTML = message;
+        this.show();
+    }
+
 
 
     /** show the modal */
