@@ -173,12 +173,8 @@ class CartSummary{
      */
     checkIfCartIsEmpty(){
 
-        let products = this.cart.getProducts();
-
-        if ( Object.keys(products).length === 0){
-
+        if ( this.cartIsEmpty() ) {
             this.initEmptyCart();
-
         }
 
     }
@@ -190,7 +186,7 @@ class CartSummary{
      * regarde si le panier est vide
      * @returns { boolean } true si le panier est vide sinon false
      */
-    doesCartIsEmpty(){
+    cartIsEmpty(){
 
         let cartIsEmpty = false;
 

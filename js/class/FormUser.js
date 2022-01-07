@@ -201,7 +201,7 @@ class FormUser{
         e.preventDefault();
         e.stopImmediatePropagation();
 
-        let cartIsEmpty = this.cartSummary.doesCartIsEmpty();
+        let cartIsEmpty = this.cartSummary.cartIsEmpty();
         
         if ( cartIsEmpty ){
             this.cartSummary.sendError("Votre panier est vide");
