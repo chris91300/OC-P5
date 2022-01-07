@@ -9,7 +9,7 @@
     align-items: center;
     background-color: $color-modal-bg;
 
-    &.show{
+    &.visible{
         display: flex;
     }
 
@@ -38,6 +38,7 @@
             padding-top: 1rem;
 
             & button {
+                position: relative;
                 border: 1px solid black;
                 border-radius: 20px;
                 padding: 10px 15px;
@@ -45,6 +46,44 @@
                 margin: 0 10px;
                 font-weight: bold;
                 cursor: pointer;
+
+                &::after{
+                    position: absolute;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    border-radius: 20px;
+                    background-color: white;
+                    color: rgb(23, 110, 23);
+                    opacity: 0;
+                    transition: opacity 0.2s linear;
+
+                    
+
+                }
+
+                &:first-child::after{
+                    content: "panier";
+                }
+
+                &:last-child::after{
+                    content: "X";
+                }
+
+                &:hover{
+                    &::after{
+                        opacity: 1;
+                    }
+                    
+                }
+
+                
+
+                
             }
         }
 

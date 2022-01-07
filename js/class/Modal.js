@@ -80,7 +80,7 @@ class Modal{
 
     /** show the modal */
     show(){
-        this.modal.classList.add("show");
+        this.modal.classList.add("visible");
     }
 
 
@@ -88,7 +88,7 @@ class Modal{
      * hide the modal when user click on the buttonHide
      */
     hide = ()=>{
-        this.modal.classList.remove("show");
+        this.modal.classList.remove("visible");
     }
 
 }

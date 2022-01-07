@@ -18,7 +18,7 @@
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
 }
-.modal.show {
+.modal.visible {
   display: flex;
 }
 .modal__container {
@@ -44,6 +44,7 @@
   padding-top: 1rem;
 }
 .modal__container__buttons button {
+  position: relative;
   border: 1px solid black;
   border-radius: 20px;
   padding: 10px 15px;
@@ -51,6 +52,30 @@
   margin: 0 10px;
   font-weight: bold;
   cursor: pointer;
+}
+.modal__container__buttons button::after {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 20px;
+  background-color: white;
+  color: #176e17;
+  opacity: 0;
+  transition: opacity 0.2s linear;
+}
+.modal__container__buttons button:first-child::after {
+  content: "panier";
+}
+.modal__container__buttons button:last-child::after {
+  content: "X";
+}
+.modal__container__buttons button:hover::after {
+  opacity: 1;
 }
 .modal__button--hide {
   position: absolute;
