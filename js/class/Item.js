@@ -13,7 +13,7 @@ class Item{
     constructor(){
         this.modalError = new ModalError();
         this.modalSuccess = new ModalSuccess();
-        this.url = window.location.search;
+        this.url = window.location.href;
         this.baseUrl = "http://localhost:3000/api/products/";
         this.id = this.getParam(this.url, "id");
         this.url = this.baseUrl + this.id;
