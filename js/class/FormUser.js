@@ -199,7 +199,6 @@ class FormUser{
     submit = (e) => {
         
         e.preventDefault();
-        e.stopImmediatePropagation();
 
         let cartIsEmpty = this.cartSummary.cartIsEmpty();
         
