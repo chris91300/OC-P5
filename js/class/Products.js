@@ -55,7 +55,7 @@ class Products{
      * send the error message to the modalError
      * @param {string} message the message to show
      */
-    sendMesaage(message){
+    sendMessage(message){
         this.modalError.showMessage(message);
     }
 }
