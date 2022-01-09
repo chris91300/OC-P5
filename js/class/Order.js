@@ -20,7 +20,7 @@ class Order{
     sendOrderId(){
         
         try {
-            let url = location.href;
+            let url = location.search;
             let orderId = getParam(url, 'orderId');  
 
             if (!orderId || !this.regexOrder.test(orderId)){

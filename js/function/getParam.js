@@ -10,10 +10,14 @@ function getParam(url, paramToReturn){
 
     checkTypeOfVariable(url, "string", "impossible de récupérer un paramètre. l'url n'est pas valable");
     checkTypeOfVariable(paramToReturn, "string", "impossible de créer l'élement. le paramètre à rechercher n'est pas valable");
-
-    url = url.split("?")[1];
+    
     let valueToReturn = null;
     let searchParams = new URLSearchParams(url)
+    
+    if ( !searchParams.has(paramToReturn) ) {
+        
+        throw new Error("Une erreur est survenue");
+    }
     
     valueToReturn = searchParams.get(paramToReturn);
     

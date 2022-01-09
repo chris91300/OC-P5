@@ -13,14 +13,29 @@ class Item{
     constructor(){
         this.modalError = new ModalError();
         this.modalSuccess = new ModalSuccess();
-        this.url = window.location.href;
+        this.url = window.location.search;
         this.baseUrl = "http://localhost:3000/api/products/";
-        this.id = getParam(this.url, "id");
+        this.id = this.getParam(this.url, "id");
         this.url = this.baseUrl + this.id;
         this.data;
         this.cart = new Cart(this.modalError);
         this.init();
         this.addToCartEvent();
+    }
+
+
+    /**
+     * get the parameter id in the url of the page
+     * @param {string} url url where find the parameter
+     * @param {string} param the parameter to find in the url
+     */
+    getParam(url, param) {
+        try{
+            return getParam(url, param);
+        }
+        catch (err ){
+            this.modalError.showMessage(err.message)
+        }
     }
 
 
